@@ -27,11 +27,13 @@ export function SortFilterWrapper({ sort, minRating }: SortFilterWrapperProps) {
     router.push(`${pathname ?? ""}?${params.toString()}` as any);
   };
 
+  const sortLabel = sort === "rating_desc" ? "별점순" : "최신순";
+
   return (
     <div className="flex gap-2">
       <Select value={sort} onValueChange={(v) => updateParam("sort", v ?? "")}>
-        <SelectTrigger className="w-32">
-          <SelectValue />
+        <SelectTrigger className="w-28">
+          <span>{sortLabel}</span>
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="readDate_desc">최신순</SelectItem>

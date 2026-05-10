@@ -62,8 +62,8 @@ export async function getBooks(options: GetBooksOptions = {}): Promise<Book[]> {
       ],
     });
 
-  const response = await notion.dataSources.query({
-    data_source_id: DATABASE_ID,
+  const response = await notion.databases.query({
+    database_id: DATABASE_ID,
     filter: andFilters.length === 1 ? andFilters[0] : { and: andFilters },
     sorts: [
       sort === "rating_desc"

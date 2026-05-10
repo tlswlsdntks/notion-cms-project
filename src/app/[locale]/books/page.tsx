@@ -28,19 +28,24 @@ export default async function BooksPage({
   const t = await getTranslations("books");
 
   let books: Book[] = [];
+  let allBooks: Book[] = [];
   try {
-    books = await getBooks({
-      genre: genre || undefined,
-      minRating: minRating ? Number(minRating) : undefined,
-      sort: (sort as "readDate_desc" | "rating_desc") || "readDate_desc",
-      search: q || undefined,
-    });
+    [books, allBooks] = await Promise.all([
+      getBooks({
+        genre: genre || undefined,
+        minRating: minRating ? Number(minRating) : undefined,
+        sort: (sort as "readDate_desc" | "rating_desc") || "readDate_desc",
+        search: q || undefined,
+      }),
+      getBooks(),
+    ]);
   } catch {
     books = [];
+    allBooks = [];
   }
 
   const genres = [
-    ...new Set(books.map((b) => b.genre).filter(Boolean)),
+    ...new Set(allBooks.map((b) => b.genre).filter(Boolean)),
   ] as string[];
 
   return (

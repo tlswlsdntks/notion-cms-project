@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "*.amazonaws.com",
       },
+      // Google Books 표지 이미지
+      {
+        protocol: "https",
+        hostname: "books.google.com",
+      },
     ],
   },
 
