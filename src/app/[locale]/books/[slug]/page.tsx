@@ -55,22 +55,19 @@ export default async function BookDetailPage({
   const { slug } = await params;
   const t = await getTranslations("bookDetail");
 
-  let book = null;
+  const book = await getBookBySlug(slug).catch(() => null);
+  if (!book) notFound();
+
   let content = "";
   let allBooks: Awaited<ReturnType<typeof getBooks>> = [];
-
   try {
-    book = await getBookBySlug(slug);
-    if (!book) notFound();
     [content, allBooks] = await Promise.all([
       getBookContent(book.id),
       getBooks({ sort: "readDate_desc" }),
     ]);
   } catch {
-    notFound();
+    // 본문/목록 실패는 graceful — 책 헤더는 표시
   }
-
-  if (!book) notFound();
 
   const currentIndex = allBooks.findIndex((b) => b.slug === slug);
   const prevBook = allBooks[currentIndex + 1] ?? null;
