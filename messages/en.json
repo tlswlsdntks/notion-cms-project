@@ -21,7 +21,10 @@
     "settings": "Settings",
     "profile": "Profile",
     "components": "Components",
-    "documentation": "Documentation"
+    "documentation": "Documentation",
+    "quotes": "Quotes",
+    "books": "Books",
+    "stats": "Stats"
   },
   "landing": {
     "hero": {
@@ -65,6 +68,45 @@
     "stack": {
       "title": "Built with the best tools"
     }
+  },
+  "home": {
+    "recentBooks": "Recently Finished",
+    "yearlyCount": "You've read {count} books this year",
+    "noBooks": "No books finished yet",
+    "goal": "{current} / {total} books this year"
+  },
+  "books": {
+    "allGenres": "All",
+    "noBooks": "No books found",
+    "title": "Book List",
+    "sortLatest": "Latest",
+    "sortRating": "Top Rated",
+    "ratingFilter": "Rating Filter",
+    "ratingAll": "All",
+    "rating3up": "3+ Stars",
+    "rating4up": "4+ Stars",
+    "rating5": "5 Stars",
+    "searchPlaceholder": "Search by title or author",
+    "noResults": "No results found"
+  },
+  "bookDetail": {
+    "prevBook": "Previous",
+    "nextBook": "Next",
+    "review": "Review",
+    "copyLink": "Copy link",
+    "copied": "Copied!"
+  },
+  "stats": {
+    "title": "Reading Stats",
+    "yearlyChart": "Books per Year",
+    "genreChart": "Genre Distribution",
+    "ratingChart": "Rating Distribution",
+    "booksCount": " books",
+    "noData": "No data available"
+  },
+  "quotes": {
+    "title": "Quote Collection",
+    "empty": "No quotes yet. Add quotes in the Notion database."
   },
   "dashboard": {
     "overview": {

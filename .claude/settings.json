@@ -31,15 +31,6 @@
         ]
       }
     ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\tlswl\\.claude\\hooks\\slack-notify.ps1\""
-          }
-        ]
-      }
-    ]
+    "Stop": []
   }
 }

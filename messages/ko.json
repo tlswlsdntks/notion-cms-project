@@ -21,7 +21,10 @@
     "settings": "설정",
     "profile": "프로필",
     "components": "컴포넌트",
-    "documentation": "문서"
+    "documentation": "문서",
+    "quotes": "인용구",
+    "books": "책 목록",
+    "stats": "독서 통계"
   },
   "landing": {
     "hero": {
@@ -65,6 +68,45 @@
     "stack": {
       "title": "최고의 도구로 구축"
     }
+  },
+  "home": {
+    "recentBooks": "최근 완독",
+    "yearlyCount": "올해 {count}권 읽었습니다",
+    "noBooks": "아직 완독한 책이 없습니다",
+    "goal": "올해 {current}권 / 목표 {total}권"
+  },
+  "books": {
+    "allGenres": "전체",
+    "noBooks": "책이 없습니다",
+    "title": "책 목록",
+    "sortLatest": "최신순",
+    "sortRating": "별점순",
+    "ratingFilter": "별점 필터",
+    "ratingAll": "전체",
+    "rating3up": "3점 이상",
+    "rating4up": "4점 이상",
+    "rating5": "5점",
+    "searchPlaceholder": "제목 또는 저자로 검색",
+    "noResults": "검색 결과가 없습니다"
+  },
+  "bookDetail": {
+    "prevBook": "이전 책",
+    "nextBook": "다음 책",
+    "review": "리뷰",
+    "copyLink": "링크 복사",
+    "copied": "복사됨"
+  },
+  "stats": {
+    "title": "독서 통계",
+    "yearlyChart": "연도별 독서량",
+    "genreChart": "장르 분포",
+    "ratingChart": "별점 분포",
+    "booksCount": "권",
+    "noData": "데이터가 없습니다"
+  },
+  "quotes": {
+    "title": "인용구 컬렉션",
+    "empty": "아직 인용구가 없습니다. Notion에서 인용구 필드를 채워보세요."
   },
   "dashboard": {
     "overview": {
