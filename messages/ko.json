@@ -1,0 +1,117 @@
+{
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "submit": "제출",
+    "close": "닫기",
+    "search": "검색",
+    "darkMode": "다크 모드",
+    "lightMode": "라이트 모드",
+    "systemMode": "시스템"
+  },
+  "nav": {
+    "home": "홈",
+    "dashboard": "대시보드",
+    "overview": "개요",
+    "analytics": "분석",
+    "settings": "설정",
+    "profile": "프로필",
+    "components": "컴포넌트",
+    "documentation": "문서"
+  },
+  "landing": {
+    "hero": {
+      "badge": "오픈 소스",
+      "title": "다음 프로젝트를",
+      "titleHighlight": "10배 빠르게",
+      "description": "TypeScript, Tailwind CSS, shadcn/ui, 다크 모드, 다국어 지원을 갖춘 프로덕션 레디 Next.js 16 스타터 킷. 빠른 출시를 위한 모든 것이 준비되어 있습니다.",
+      "cta": "시작하기",
+      "ctaSecondary": "GitHub 보기"
+    },
+    "features": {
+      "title": "필요한 모든 것",
+      "description": "현대적인 웹 애플리케이션 구축을 위해 엄선된 도구와 패턴 모음입니다.",
+      "items": {
+        "nextjs": {
+          "title": "Next.js 16",
+          "description": "App Router, 서버 컴포넌트, 최신 React 기능을 기본으로 제공합니다."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "description": "strict 모드가 활성화된 완전한 타입 안전성을 제공합니다."
+        },
+        "shadcn": {
+          "title": "shadcn/ui",
+          "description": "자유롭게 커스터마이징할 수 있는 아름답고 접근성 높은 컴포넌트입니다."
+        },
+        "darkmode": {
+          "title": "다크 모드",
+          "description": "시스템 설정을 감지하는 매끄러운 다크/라이트 모드 전환을 제공합니다."
+        },
+        "i18n": {
+          "title": "다국어 지원",
+          "description": "next-intl을 사용한 다국어 지원. 한국어와 영어가 기본 포함됩니다."
+        },
+        "dashboard": {
+          "title": "대시보드 레이아웃",
+          "description": "접힘 메뉴와 브레드크럼을 갖춘 반응형 사이드바 네비게이션입니다."
+        }
+      }
+    },
+    "stack": {
+      "title": "최고의 도구로 구축"
+    }
+  },
+  "dashboard": {
+    "overview": {
+      "title": "개요",
+      "description": "대시보드에 오신 것을 환영합니다",
+      "totalUsers": "총 사용자",
+      "revenue": "수익",
+      "activeProjects": "활성 프로젝트",
+      "growth": "성장률",
+      "recentActivity": "최근 활동",
+      "activityDescription": "워크스페이스의 최근 작업",
+      "fromLastMonth": "지난 달 대비",
+      "viewAll": "모두 보기"
+    },
+    "analytics": {
+      "title": "분석",
+      "description": "주요 지표를 추적하세요",
+      "monthlyOverview": "월간 개요",
+      "monthlyDescription": "지난 8개월간 성과 지표",
+      "pageViews": "페이지 뷰",
+      "uniqueVisitors": "순 방문자",
+      "bounceRate": "이탈률"
+    },
+    "settings": {
+      "title": "설정",
+      "description": "환경설정 관리",
+      "appearance": "외관",
+      "language": "언어",
+      "theme": "테마",
+      "selectLanguage": "언어 선택",
+      "selectTheme": "테마 선택"
+    },
+    "components": {
+      "title": "컴포넌트",
+      "description": "사용 가능한 UI 컴포넌트 탐색",
+      "buttons": "버튼",
+      "buttonsDesc": "다양한 버튼 스타일과 크기",
+      "badges": "배지",
+      "badgesDesc": "상태 및 라벨 표시",
+      "formInputs": "폼 입력",
+      "formInputsDesc": "입력 필드와 라벨",
+      "avatars": "아바타",
+      "avatarsDesc": "사용자 프로필 표현",
+      "skeleton": "스켈레톤",
+      "skeletonDesc": "로딩 플레이스홀더",
+      "separator": "구분선",
+      "separatorDesc": "콘텐츠 구분선"
+    }
+  }
+}

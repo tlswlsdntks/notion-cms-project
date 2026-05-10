@@ -1,0 +1,117 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "submit": "Submit",
+    "close": "Close",
+    "search": "Search",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "systemMode": "System"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "profile": "Profile",
+    "components": "Components",
+    "documentation": "Documentation"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Open Source",
+      "title": "Build your next project",
+      "titleHighlight": "10x faster",
+      "description": "A production-ready Next.js 16 starter kit with TypeScript, Tailwind CSS, shadcn/ui, dark mode, and i18n support. Everything you need to ship fast.",
+      "cta": "Get Started",
+      "ctaSecondary": "View on GitHub"
+    },
+    "features": {
+      "title": "Everything you need",
+      "description": "A carefully curated set of tools and patterns for building modern web applications.",
+      "items": {
+        "nextjs": {
+          "title": "Next.js 16",
+          "description": "App Router, Server Components, and the latest React features out of the box."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "description": "Full type safety across your entire codebase with strict mode enabled."
+        },
+        "shadcn": {
+          "title": "shadcn/ui",
+          "description": "Beautiful, accessible components that you own and can customize freely."
+        },
+        "darkmode": {
+          "title": "Dark Mode",
+          "description": "Seamless dark/light mode switching with system preference detection."
+        },
+        "i18n": {
+          "title": "Internationalization",
+          "description": "Multi-language support with next-intl. Korean and English included."
+        },
+        "dashboard": {
+          "title": "Dashboard Layout",
+          "description": "Responsive sidebar navigation with collapsible menu and breadcrumbs."
+        }
+      }
+    },
+    "stack": {
+      "title": "Built with the best tools"
+    }
+  },
+  "dashboard": {
+    "overview": {
+      "title": "Overview",
+      "description": "Welcome to your dashboard",
+      "totalUsers": "Total Users",
+      "revenue": "Revenue",
+      "activeProjects": "Active Projects",
+      "growth": "Growth",
+      "recentActivity": "Recent Activity",
+      "activityDescription": "Latest actions in your workspace",
+      "fromLastMonth": "from last month",
+      "viewAll": "View all"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "description": "Track your key metrics",
+      "monthlyOverview": "Monthly Overview",
+      "monthlyDescription": "Performance metrics for the past 8 months",
+      "pageViews": "Page Views",
+      "uniqueVisitors": "Unique Visitors",
+      "bounceRate": "Bounce Rate"
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Manage your preferences",
+      "appearance": "Appearance",
+      "language": "Language",
+      "theme": "Theme",
+      "selectLanguage": "Select language",
+      "selectTheme": "Select theme"
+    },
+    "components": {
+      "title": "Components",
+      "description": "Explore available UI components",
+      "buttons": "Buttons",
+      "buttonsDesc": "Various button styles and sizes",
+      "badges": "Badges",
+      "badgesDesc": "Status and label indicators",
+      "formInputs": "Form Inputs",
+      "formInputsDesc": "Input fields and labels",
+      "avatars": "Avatars",
+      "avatarsDesc": "User profile representations",
+      "skeleton": "Skeleton",
+      "skeletonDesc": "Loading placeholders",
+      "separator": "Separator",
+      "separatorDesc": "Content dividers"
+    }
+  }
+}
