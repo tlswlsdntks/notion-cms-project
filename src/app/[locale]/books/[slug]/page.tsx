@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getBooks, getBookBySlug, getBookContent } from "@/lib/notion";
 import { RatingStars } from "@/components/RatingStars";
 import { ShareButton } from "@/components/ShareButton";
@@ -24,7 +24,8 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
   try {
     const book = await getBookBySlug(slug);
     if (!book) return {};
@@ -52,7 +53,8 @@ export default async function BookDetailPage({
 }: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("bookDetail");
 
   const book = await getBookBySlug(slug).catch(() => null);
