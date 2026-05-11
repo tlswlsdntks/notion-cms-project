@@ -1,5 +1,8 @@
 import { Client } from "@notionhq/client";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  PageObjectResponse,
+  QueryDatabaseParameters,
+} from "@notionhq/client/build/src/api-endpoints";
 import { NotionToMarkdown } from "notion-to-md";
 import { Book } from "@/types/book";
 
@@ -13,24 +16,54 @@ export async function testConnection() {
   return response;
 }
 
+type PageProperties = PageObjectResponse["properties"];
+type PageProperty = PageProperties[string];
+
+function getProp<T extends PageProperty["type"]>(
+  props: PageProperties,
+  name: string,
+  type: T,
+): Extract<PageProperty, { type: T }> | undefined {
+  const p = props[name];
+  if (p && p.type === type) {
+    return p as Extract<PageProperty, { type: T }>;
+  }
+  return undefined;
+}
+
 function pageToBook(page: PageObjectResponse): Book {
-  const props = page.properties as any;
-  const coverFiles = props["표지"]?.files ?? [];
+  const props = page.properties;
+
+  const cover = getProp(props, "표지", "files");
+  const coverFile = cover?.files[0];
   const coverUrl =
-    coverFiles[0]?.file?.url ?? coverFiles[0]?.external?.url ?? "";
+    coverFile && "file" in coverFile
+      ? coverFile.file.url
+      : coverFile && "external" in coverFile
+        ? coverFile.external.url
+        : "";
+
+  const title = getProp(props, "제목", "title");
+  const author = getProp(props, "저자", "rich_text");
+  const genre = getProp(props, "장르", "select");
+  const rating = getProp(props, "별점", "number");
+  const readDate = getProp(props, "독서완료일", "date");
+  const status = getProp(props, "상태", "select");
+  const oneLineSummary = getProp(props, "한줄요약", "rich_text");
+  const quote = getProp(props, "인용구", "rich_text");
 
   return {
     id: page.id,
     slug: page.id.replace(/-/g, ""),
-    title: props["제목"]?.title?.[0]?.plain_text ?? "",
-    author: props["저자"]?.rich_text?.[0]?.plain_text ?? "",
-    genre: props["장르"]?.select?.name ?? "",
-    rating: props["별점"]?.number ?? 0,
-    readDate: props["독서완료일"]?.date?.start ?? "",
+    title: title?.title[0]?.plain_text ?? "",
+    author: author?.rich_text[0]?.plain_text ?? "",
+    genre: genre?.select?.name ?? "",
+    rating: rating?.number ?? 0,
+    readDate: readDate?.date?.start ?? "",
     coverUrl,
-    status: (props["상태"]?.select?.name ?? "읽고싶음") as Book["status"],
-    oneLineSummary: props["한줄요약"]?.rich_text?.[0]?.plain_text ?? "",
-    quote: props["인용구"]?.rich_text?.[0]?.plain_text || undefined,
+    status: (status?.select?.name ?? "읽고싶음") as Book["status"],
+    oneLineSummary: oneLineSummary?.rich_text[0]?.plain_text ?? "",
+    quote: quote?.rich_text[0]?.plain_text || undefined,
   };
 }
 
@@ -42,10 +75,13 @@ export interface GetBooksOptions {
   search?: string;
 }
 
+type PropertyFilter = NonNullable<QueryDatabaseParameters["filter"]>;
+type AndFilter = Extract<PropertyFilter, { and: unknown }>["and"][number];
+
 export async function getBooks(options: GetBooksOptions = {}): Promise<Book[]> {
   const { genre, minRating, sort = "readDate_desc", limit, search } = options;
 
-  const andFilters: any[] = [
+  const andFilters: AndFilter[] = [
     { property: "상태", select: { equals: "완독" } },
   ];
   if (genre) andFilters.push({ property: "장르", select: { equals: genre } });
@@ -73,17 +109,23 @@ export async function getBooks(options: GetBooksOptions = {}): Promise<Book[]> {
     page_size: limit ?? 100,
   });
 
-  return (response.results as PageObjectResponse[]).map(pageToBook);
+  return response.results
+    .filter((r): r is PageObjectResponse => "properties" in r)
+    .map(pageToBook);
 }
 
+const SLUG_PATTERN = /^[0-9a-f]{32}$/i;
+
 export async function getBookBySlug(slug: string): Promise<Book | null> {
+  if (!SLUG_PATTERN.test(slug)) return null;
+  const pageId = slug.replace(
+    /(.{8})(.{4})(.{4})(.{4})(.{12})/,
+    "$1-$2-$3-$4-$5",
+  );
   try {
-    const pageId = slug.replace(
-      /(.{8})(.{4})(.{4})(.{4})(.{12})/,
-      "$1-$2-$3-$4-$5"
-    );
     const page = await notion.pages.retrieve({ page_id: pageId });
-    return pageToBook(page as PageObjectResponse);
+    if (!("properties" in page)) return null;
+    return pageToBook(page);
   } catch {
     return null;
   }

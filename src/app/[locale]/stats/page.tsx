@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getBooks } from "@/lib/notion";
 import { StatsChart } from "@/components/StatsChart";
 
@@ -15,6 +15,7 @@ export default async function StatsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "stats" });
 
   let books: Awaited<ReturnType<typeof getBooks>> = [];

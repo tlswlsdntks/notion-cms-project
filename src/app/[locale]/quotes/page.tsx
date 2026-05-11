@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/navigation";
 import { getBooks } from "@/lib/notion";
 import type { Book } from "@/types/book";
@@ -11,6 +11,7 @@ export default async function QuotesPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "quotes" });
 
   let books: Book[] = [];

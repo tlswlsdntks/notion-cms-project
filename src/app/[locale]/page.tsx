@@ -1,4 +1,4 @@
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getBooks } from "@/lib/notion";
 import { BookCard } from "@/components/BookCard";
 import { GenreFilterWrapper } from "@/components/GenreFilterWrapper";
@@ -8,12 +8,15 @@ import type { Book } from "@/types/book";
 export const revalidate = 60;
 
 export default async function HomePage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{ genre?: string }>;
 }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const { genre } = await searchParams;
-  const locale = await getLocale();
   const t = await getTranslations("home");
 
   let books: Book[] = [];

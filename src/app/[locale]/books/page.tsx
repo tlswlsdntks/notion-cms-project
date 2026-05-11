@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getBooks } from "@/lib/notion";
 import { BookCard } from "@/components/BookCard";
 import { GenreFilterWrapper } from "@/components/GenreFilterWrapper";
@@ -15,8 +15,10 @@ export const metadata = {
 };
 
 export default async function BooksPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{
     genre?: string;
     minRating?: string;
@@ -24,6 +26,8 @@ export default async function BooksPage({
     q?: string;
   }>;
 }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const { genre, minRating, sort, q } = await searchParams;
   const t = await getTranslations("books");
 
